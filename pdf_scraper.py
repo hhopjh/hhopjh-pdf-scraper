@@ -21,7 +21,7 @@ def main():
         d[regex_pattern] = []
 
     file_total = len(os.listdir(inputdir))
-    file_number = 1
+    file_number = 0
     for filename in os.listdir(inputdir):
         if re.search(r'\.pdf$', filename):
             file_number += 1
@@ -41,8 +41,9 @@ def main():
                     # print("this is page " + str(i))
                     text += PageObj.extractText()
                     # print(text)
-                result = re.search(regex_pattern, text)
-                if result:
+                # result = re.search(regex_pattern, text)
+                # if result:
+                if regex_pattern in text:
                     # print(f'{regex_pattern}\t{filename}')
                     l = d.get(regex_pattern)
                     if filename not in l:
@@ -52,7 +53,7 @@ def main():
         pprint(d)
         f_write_to_csv(d)
 
-    input('Success!')
+    # input('Success!')
 
 
 def f_write_to_csv(d):
