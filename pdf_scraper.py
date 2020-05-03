@@ -56,7 +56,7 @@ def main():
 
 
 def f_write_to_csv(d):
-    with open(outputfile, mode='w') as csv_file:
+    with open(outputfile, mode='w', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
         writer.writerow(['sep=,'])
