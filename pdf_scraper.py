@@ -52,11 +52,14 @@ def main():
         pprint(d)
         f_write_to_csv(d)
 
+    input('Success!')
+
 
 def f_write_to_csv(d):
     with open(outputfile, mode='w') as csv_file:
-        writer = csv.writer(csv_file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
+        writer.writerow(['sep=,'])
         writer.writerow(['Invoice', 'Filename'])
         for invoice in d:
             filename_str = ''
